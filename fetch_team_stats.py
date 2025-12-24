@@ -5,7 +5,6 @@ from nba_api.stats.endpoints import leaguedashteamstats
 SEASON = "2024-25"
 SEASON_TYPE = "Regular Season"
 PER_MODE = "PerGame"
-LEAGUE_ID = "00"
 
 def fetch(last_n_games: int):
     r = leaguedashteamstats.LeagueDashTeamStats(
@@ -14,10 +13,9 @@ def fetch(last_n_games: int):
         season=SEASON,
         season_type_all_star=SEASON_TYPE,
         last_n_games=last_n_games,
-        league_id=LEAGUE_ID,
-        timeout=30
+        timeout=45
     )
-    return r.get_dict()  # full NBA JSON structure
+    return r.get_dict()
 
 def main():
     payload = {
